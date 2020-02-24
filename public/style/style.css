@@ -1,0 +1,202 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+body {
+	background-image: url("memphis-mini.png");
+	background-repeat: repeat;
+}
+
+#header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	background-color: #2962A9;
+	color: rgb(255, 255, 255);
+}
+
+.pogoda {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(68, 68, 68);
+}
+
+.pogoda2 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	/* margin-top: 15px; */
+	background-color: rgb(255, 255, 255);
+	color: white;
+	background-color: #2962A9;
+	padding: 15px;
+}
+
+#icon0,
+#icon1,
+#icon2 {
+	background-color: #347BD5;
+	border-radius: 50%;
+}
+
+.h1 {
+	margin-bottom: 15px;
+}
+
+.middle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 33%;
+}
+
+
+
+.left {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 3;
+	flex-wrap: nowrap;
+	/* align-items: center; */
+	justify-content: center;
+	padding: 15px;
+	width: 33%;
+}
+
+.left2 {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 3;
+	flex-wrap: nowrap;
+	color: white;
+	/* align-items: center; */
+	justify-content: center;
+	padding: 15px;
+	width: 33%;
+	background-color: #1F4371;
+}
+
+.right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: nowrap;
+	width: 33%;
+}
+
+
+
+#sprawdz {
+	margin-top: 20px;
+	padding: 20px;
+	border: none;
+	border-radius: 5%;
+	background-color: #347BD5;
+	color: white;
+	font-size: 18px;
+}
+
+#sprawdz:hover {
+	background-color: #609AE1;
+	cursor: pointer;
+}
+
+#miasto,
+#temperatura_aktualna,
+#temperatura_minimalna,
+#temperatura_maksymalna,
+#wilgotnosc,
+#lat,
+#lon,
+#cisnienie {
+	/* padding-left: 20px; */
+	align-items: center;
+}
+
+
+.miasta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	wrap: nowrap;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.opcje_miast {
+	background-color: #347BD5;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 3%;
+}
+
+@media (max-width: 1000px) {
+	.pogoda {
+		flex-direction: column;
+		wrap: wrap;
+		padding: 0;
+
+	}
+
+	.pogoda2 {
+		flex-direction: column;
+		wrap: wrap;
+		padding: 0;
+	}
+
+	.left {
+		flex-direction: column;
+		wrap: wrap;
+		width: 100%;
+		margin-top: 30px;
+		font-size: 18px;
+		text-align: center;
+		padding: 0;
+	}
+
+	.middle {
+		flex-direction: column;
+		wrap: wrap;
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.right {
+		flex-direction: column;
+		wrap: nowrap;
+		width: 100%;
+		border-bottom: white solid 2px;
+		margin-top: 30px;
+		font-size: 18px;
+	}
+
+
+
+	label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 40px;
+		text-align: center;
+	}
+
+	select {
+		font-size: 40px;
+	}
+
+
+
+}

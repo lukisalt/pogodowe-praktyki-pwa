@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather PWA by Łukasz Caliński</title>
+  <link rel="stylesheet" href="style/style.css">
+  <!-- implementacja skryptu pogodowego -->
+  <script src="scripts/pogoda.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <!-- meta tagi dla aplikacji mobilnej -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="/images/icons/icon-144x144.png">
+  <meta name="theme-color" content="#3C5CA8">
+  <link rel="canonical" href="https://localhost:3000/" />
+</head>
+
+<body>
+  <div id="header">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Łukasz Caliński
+  </div>
+
+  <div class="pogoda">
+
+    <div class="left">
+      <h1 id="miasto"></h1>
+      <h3 id="czas0"></h3>
+      <h2 id="temperatura_aktualna"></h2>
+      <h3 id="temperatura_minimalna0"></h3>
+      <h3 id="temperatura_maksymalna0"></h3>
+      <h3 id="cisnienie0"></h3>
+      <h3 id="wilgotnosc0"></h3>
+    </div>
+    <div class="middle">
+      <h2 id="icon0"></h2>
+    </div>
+    <div class="right">
+      <div class="miasta">
+        <label for="miasta">Wybierz konkretne miasto: &nbsp;
+          <select class="opcje_miast" name="miasta">
+            <option value="Default">Wybierz</option>
+            <option value="776069">Białystok</option>
+            <option value="7531002">Gdańsk</option>
+            <option value="3096472">Katowice</option>
+            <option value="769250">Kielce</option>
+            <option value="3094802">Kraków</option>
+            <option value="765876">Lublin</option>
+            <option value="3093133">Łódź</option>
+            <option value="763166">Olsztyn</option>
+            <option value="3090048">Opole</option>
+            <option value="7530858">Poznań</option>
+            <option value="7530819">Rzeszów</option>
+            <option value="3083829">Szczecin</option>
+            <option value="3083271">Toruń</option>
+            <option value="6695624">Warszawa</option>
+            <option value="3081368">Wrocław</option>
+            <option value="7530991">Zielona Góra</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="pogoda2">
+
+    <div class="left">
+      <h3 id="czas1"></h3>
+      <h3 id="temperatura_minimalna1"></h3>
+      <h3 id="temperatura_maksymalna1"></h3>
+      <h3 id="cisnienie1"></h3>
+      <h3 id="wilgotnosc1"></h3>
+    </div>
+    <div class="middle">
+      <h2 id="icon1"></h2>
+    </div>
+    <div class="right"></div>
+
+    <div class="left">
+      <h3 id="czas2"></h3>
+      <h3 id="temperatura_minimalna2"></h3>
+      <h3 id="temperatura_maksymalna2"></h3>
+      <h3 id="cisnienie2"></h3>
+      <h3 id="wilgotnosc2"></h3>
+    </div>
+    <div class="middle">
+      <h2 id="icon2"></h2>
+
+      <div class="right"></div>
+    </div>
+
+
+    <script type="text/javascript">
+      // Funkcja GPS
+      window.onload = function () {
+        let lat;
+        let lon;
+        navigator.geolocation.getCurrentPosition(function (data) {
+          lat = data.coords.latitude;
+          lon = data.coords.longitude;
+          pogodaGps(lat, lon);
+        });
+      }
+      document.querySelector('.opcje_miast').addEventListener('change', function () {
+        var miasto = document.querySelector('.opcje_miast').value;
+        if (miasto != "Default") {
+          pogodaMiasto(miasto);
+        }
+      });
+
+      // Obsługa service workerow
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((reg) => {
+              console.log('Service worker registered.', reg);
+            })
+            .catch(err => console.log(`Service Worker: Error : ${err}`))
+        });
+      }
+    </script>
+</body>
+
+</html>
